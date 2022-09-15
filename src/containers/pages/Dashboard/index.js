@@ -27,20 +27,12 @@ const Dashboard = () => {
     dispatch(getDataMovie());
   }, []);
 
-  // console.log('list', movies);
-  // const newData = movies
-  // setTimeout(() => {
-  //   console.log(movies);
-  // }, 3000);
-
   const handleApi = () => {
-    // console.log(getData);
     console.log(movies);
   };
 
   return (
     <>
-      <button onClick={handleApi}>click</button>
       <div className="img-besar">
         <img src={tmdbLogo} />
         <div className="input-wrap">
@@ -60,6 +52,7 @@ const Dashboard = () => {
               </IconContext.Provider>
             </div>
             <div className="hasil">
+              {/* filter/search */}
               {movies.length > 0 ? (
                 <Fragment>
                   {movies
@@ -100,22 +93,74 @@ const Dashboard = () => {
         <p>Ter Populer</p>
       </div>
       <div className="card-wrap">
-        <div className="image-wrap">
-          <img src={`${baseImgUrl}${movies[0]?.poster_path}`}></img>
-          <p>{movies[0]?.title}</p>
-
-          <img src={`${baseImgUrl}${movies[1]?.poster_path}`}></img>
-          <p>{movies[1]?.title}</p>
-
-          <img src={`${baseImgUrl}${movies[2]?.poster_path}`}></img>
-          <p>{movies[2]?.title}</p>
-
-          <img src={`${baseImgUrl}${movies[3]?.poster_path}`}></img>
-          <p>{movies[3]?.title}</p>
-
-          <img src={`${baseImgUrl}${movies[4]?.poster_path}`}></img>
-          <p>{movies[4]?.title}</p>
-        </div>
+        {movies.length > 0 ? (
+          <Fragment>
+            <div className="image-wrap">
+              <div>
+                <Link
+                  to={{
+                    pathname: `detail/${movies[0]?.id}`,
+                    // query: { id: movies.id },
+                  }}
+                >
+                  <img src={`${baseImgUrl}${movies[0]?.poster_path}`}></img>
+                  <p>{movies[0]?.title}</p>
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to={{
+                    pathname: `detail/${movies[1]?.id}`,
+                    // query: { id: movies.id },
+                  }}
+                >
+                  <img src={`${baseImgUrl}${movies[1]?.poster_path}`}></img>
+                  <p>{movies[1]?.title}</p>
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to={{
+                    pathname: `detail/${movies[2]?.id}`,
+                    // query: { id: movies.id },
+                  }}
+                >
+                  <img src={`${baseImgUrl}${movies[2]?.poster_path}`}></img>
+                  <p>{movies[2]?.title}</p>
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to={{
+                    pathname: `detail/${movies[3]?.id}`,
+                    // query: { id: movies.id },
+                  }}
+                >
+                  <img src={`${baseImgUrl}${movies[3]?.poster_path}`}></img>
+                  <p>{movies[3]?.title}</p>
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to={{
+                    pathname: `detail/${movies[4]?.id}`,
+                    // query: { id: movies.id },
+                  }}
+                >
+                  <img src={`${baseImgUrl}${movies[4]?.poster_path}`}></img>
+                  <p>{movies[4]?.title}</p>
+                </Link>
+              </div>
+            </div>
+          </Fragment>
+        ) : (
+          <ClipLoader
+            className="loading"
+            color={"#ffffff"}
+            loading={loading}
+            // size={}
+          />
+        )}
       </div>
       {/* uji coba slide */}
 
@@ -151,7 +196,7 @@ const Dashboard = () => {
         </div>
       </div> */}
       <div className="showMore">
-        <p>More...</p>
+        <Link to='/more'>More...</Link>
       </div>
     </>
   );
