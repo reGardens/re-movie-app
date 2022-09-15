@@ -13,19 +13,25 @@ import tmdbLogo from "../../../assets/logo/tmdb-logo.png";
 import { IconContext } from "react-icons/lib";
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { getData, getDataMovie } from "../../../app/features/reducer";
+import { getDataMovie } from "../../../app/features/reducer";
 
 const Dashboard = () => {
-  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const baseImgUrl = "https://image.tmdb.org/t/p/original";
 
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.reducer.data);
+  const loading = useSelector((state) => state.movies);
 
   useEffect(() => {
     dispatch(getDataMovie());
   }, []);
+
+  // console.log('list', movies);
+  // const newData = movies
+  // setTimeout(() => {
+  //   console.log(movies);
+  // }, 3000);
 
   const handleApi = () => {
     // console.log(getData);
@@ -34,7 +40,7 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* <button onClick={handleApi}>click</button> */}
+      <button onClick={handleApi}>click</button>
       <div className="img-besar">
         <img src={tmdbLogo} />
         <div className="input-wrap">
@@ -93,8 +99,27 @@ const Dashboard = () => {
       <div className="subLink">
         <p>Ter Populer</p>
       </div>
+      <div className="card-wrap">
+        <div className="image-wrap">
+          <img src={`${baseImgUrl}${movies[0]?.poster_path}`}></img>
+          <p>{movies[0]?.title}</p>
 
-      <div className="card-overflow">
+          <img src={`${baseImgUrl}${movies[1]?.poster_path}`}></img>
+          <p>{movies[1]?.title}</p>
+
+          <img src={`${baseImgUrl}${movies[2]?.poster_path}`}></img>
+          <p>{movies[2]?.title}</p>
+
+          <img src={`${baseImgUrl}${movies[3]?.poster_path}`}></img>
+          <p>{movies[3]?.title}</p>
+
+          <img src={`${baseImgUrl}${movies[4]?.poster_path}`}></img>
+          <p>{movies[4]?.title}</p>
+        </div>
+      </div>
+      {/* uji coba slide */}
+
+      {/* <div className="card-overflow">
         <div className="image-wrap">
           {movies.length > 0 ? (
             <Fragment>
@@ -120,11 +145,11 @@ const Dashboard = () => {
               className="loading"
               color={"#ffffff"}
               loading={loading}
-              size={120}
+              // size={}
             />
           )}
         </div>
-      </div>
+      </div> */}
       <div className="showMore">
         <p>More...</p>
       </div>

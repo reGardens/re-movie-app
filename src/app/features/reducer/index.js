@@ -1,8 +1,34 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import ClipLoader from "react-spinners/ClipLoader";
+
+// export const getMovies = () => async (dispatch, rejectWithValue) => {
+//   try {
+//     const { data } = await axios.get(
+//       // "https://baconipsum.com/api/?type=meat-and-filler"
+//       "https://api.themoviedb.org/3/movie/popular?api_key=8f0b026ba6cf9d21d0a94eb7a2ede055&language=en-US&page=1"
+//     );
+//     const res = data.results;
+//     console.log(res);
+//     return res;
+//   } catch (error) {
+//     rejectWithValue(error.response);
+//   }
+// };
+
+// export const loading = () => {
+//   new Promise((resolve, reject) => {
+//     <ClipLoader
+//       className="loading"
+//       color={"#ffffff"}
+//       loading={loading}
+//       size={120}
+//     />;
+//   });
+// };
 
 export const getDataMovie = createAsyncThunk(
-  "getMovie",
+  "movies/getMovie",
   async (object, { getState, rejectWithValue }) => {
     // console.log(getState());
     try {
@@ -11,7 +37,7 @@ export const getDataMovie = createAsyncThunk(
         "https://api.themoviedb.org/3/movie/popular?api_key=8f0b026ba6cf9d21d0a94eb7a2ede055&language=en-US&page=1"
       );
       const res = data.results;
-      console.log(res);
+    //   console.log(res);
       return res;
     } catch (error) {
       rejectWithValue(error.response);
