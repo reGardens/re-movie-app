@@ -38,15 +38,16 @@ body {
                 .src {
                     display: flex;
                     align-items: center;
-                    // background-color: yellow;
+                    position: relative;
+                    height: 3em;
+                    width: 22em;
 
                     input {
-                        width: 22em;
-                        margin-left: 1em;
-                        height: 3em;
+                        width: 100%;
+                        height: 100%;
                         border: none;
                         background: rgba($background-color, 0.7);
-                        border-radius: 10px;
+                        border-radius: 10px 0 0 10px;
                         outline: none;
                         color: white;
                         font-size: 15px;
@@ -55,37 +56,41 @@ body {
 
                     .search-icon {
                         color: white;
-                        transform: translateX(-30px);
+                        background: rgba($background-color, 0.7);
+                        border-radius: 0 10px 10px 0;
+                        width: 3em;
+                        height: 100%;
+                        padding: 13px;
                     }
 
                 }
             }
 
-            .search-wrap {
-                // display: block;
-                display: flex;
-                gap: 1px;
-                // height: 10em;
-                justify-content: center;
-                margin-top: 1px;
+            .hasil {
+                position: absolute;
+                width: 22em;
+                max-height: 10em;
+                overflow-x: auto;
+                background-color: white;
+                margin-top: 2px;
 
-                a {
-                    // width: 80%;
-                    padding: 0 6px;
-                    background-color: white;
-                    color: black;
-                    text-align: center;
-                    text-decoration: none;
+                .search-wrap {
+                    margin-top: 1px;
+                    width: 100%;
 
-                    &:hover {
-                        background-color: $background-color;
-                        color: white;
+                    a {
+                        width: 100vh;
+                        height: 100%;
+                        padding: 0 6px;
+                        color: black;
+                        text-decoration: none;
+
+                        &:hover {
+                            background-color: $background-color;
+                            color: white;
+                        }
                     }
                 }
-
-                // p {
-                //     color: white;
-                // }
             }
         }
 
