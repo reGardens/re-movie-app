@@ -24,12 +24,22 @@ const Dashboard = () => {
   const loading = useSelector((state) => state.movies);
 
   useEffect(() => {
+    // console.log(movies)
     dispatch(getDataMovie());
   }, []);
 
-  const handleApi = () => {
-    console.log(movies);
-  };
+  let titleSearch = movies.filter((val) => {
+    if (search == "") {
+    } else if (val.title.toLowerCase().includes(search.toLowerCase())) {
+      return val;
+    }
+    // console.log('isi value', val);
+    // return val.title.toLowerCase().includes(search.toLowerCase());
+  });
+
+  // const handleApi = () => {
+  //   console.log(movies);
+  // };
 
   return (
     <>
@@ -52,8 +62,27 @@ const Dashboard = () => {
               </IconContext.Provider>
             </div>
             <div className="hasil">
+              {titleSearch.length > 0 ? (
+                <>
+                  {titleSearch.map((val, index) => {
+                    return (
+                      <div className="search-wrap" key={index}>
+                        <Link
+                          to={{
+                            pathname: `detail/${movies.id}`,
+                            // query: { id: movies.id },
+                          }}
+                        >
+                          {val.title}
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </>
+              ) : null}
+
               {/* filter/search */}
-              {movies.length > 0 ? (
+              {/* {movies.length > 0 ? (
                 <Fragment>
                   {movies
                     .filter((val) => {
@@ -82,7 +111,7 @@ const Dashboard = () => {
                       );
                     })}
                 </Fragment>
-              ) : null}
+              ) : null} */}
             </div>
           </div>
         </div>
@@ -196,7 +225,7 @@ const Dashboard = () => {
         </div>
       </div> */}
       <div className="showMore">
-        <Link to='/more'>More...</Link>
+        <Link to="/more">More...</Link>
       </div>
     </>
   );

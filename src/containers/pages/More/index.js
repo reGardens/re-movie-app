@@ -18,12 +18,23 @@ const More = () => {
   const movies = useSelector((state) => state.reducer.data);
   const loading = useSelector((state) => state.loading);
   const [search, setSearch] = useState("");
+  const listWrap = document.querySelector(".list-item");
+  console.log(listWrap);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDataMovie());
   }, []);
+
+  let movieSearch = movies.filter((val) => {
+    return Object.keys(val).some((key) =>
+      val[key]
+        .toString()
+        .toLowerCase()
+        .includes(search.toString().toLowerCase())
+    );
+  });
 
   return (
     <>
@@ -39,62 +50,18 @@ const More = () => {
           <BsSearch />
         </IconContext.Provider>
       </div>
-      <div className="hasil">
-        {/* filter/search */}
-        {/* {movies.length > 0 ? (
-          <>
-            {movies
-              .filter((val) => {
-                if (search == "") {
-                } else if (
-                  val.title.toLowerCase().includes(search.toLowerCase()) ||
-                  loading == true
-                ) {
-                  return val;
-                }
-              })
-              .map((movies, index) => {
-                return (
-                  <div className="search-wrap" key={index}>
-                    <Link
-                      to={{
-                        pathname: `detail/${movies.id}`,
-                        // query: { id: movies.id },
-                      }}
-                    >
-                      <img src={`${baseImgUrl}${movies.poster_path}`}></img>
-                      <p>{movies.title}</p>
-                    </Link>
-                  </div>
-                );
-              })}
-          </>
-        ) : null} */}
-      </div>
+      {/* <div className="hasil">
+      </div> */}
 
       <div className="list-wrap">
-        {movies.length > 0 ? (
+        {movieSearch.length > 0 ? (
           <>
-            {movies.filter((val) => {
-              if (search === "") {
-                // return val.length;
-              } else if (
-                val.poster_path
-                  .toLowerCase()
-                  .includes(search.toLocaleLowerCase()) ||
-                loading
-              ) {
-                // return <img src={`${baseImgUrl}${val.poster_path}`}></img>;
-                // return val
-              }
-            })}
-
-            {movies.map((movie, index) => {
+            {movieSearch.map((movie, index) => {
               return (
                 <Link
                   to={{
                     pathname: `details/${movie.id}`,
-                    // query: { id: movies.id },
+                    // query: { id: movieSearch.id },
                   }}
                   key={index}
                 >
