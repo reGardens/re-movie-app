@@ -33,8 +33,6 @@ const Dashboard = () => {
     } else if (val.title.toLowerCase().includes(search.toLowerCase())) {
       return val;
     }
-    // console.log('isi value', val);
-    // return val.title.toLowerCase().includes(search.toLowerCase());
   });
 
   // const handleApi = () => {
@@ -69,7 +67,7 @@ const Dashboard = () => {
                       <div className="search-wrap" key={index}>
                         <Link
                           to={{
-                            pathname: `detail/${movies.id}`,
+                            pathname: `details/${movies.id}`,
                             // query: { id: movies.id },
                           }}
                         >
@@ -128,7 +126,7 @@ const Dashboard = () => {
               <div>
                 <Link
                   to={{
-                    pathname: `detail/${movies[0]?.id}`,
+                    pathname: `details/${movies[0]?.id}`,
                     // query: { id: movies.id },
                   }}
                 >
@@ -139,7 +137,7 @@ const Dashboard = () => {
               <div>
                 <Link
                   to={{
-                    pathname: `detail/${movies[1]?.id}`,
+                    pathname: `details/${movies[1]?.id}`,
                     // query: { id: movies.id },
                   }}
                 >
@@ -150,7 +148,7 @@ const Dashboard = () => {
               <div>
                 <Link
                   to={{
-                    pathname: `detail/${movies[2]?.id}`,
+                    pathname: `details/${movies[2]?.id}`,
                     // query: { id: movies.id },
                   }}
                 >
@@ -161,7 +159,7 @@ const Dashboard = () => {
               <div>
                 <Link
                   to={{
-                    pathname: `detail/${movies[3]?.id}`,
+                    pathname: `details/${movies[3]?.id}`,
                     // query: { id: movies.id },
                   }}
                 >
@@ -172,7 +170,7 @@ const Dashboard = () => {
               <div>
                 <Link
                   to={{
-                    pathname: `detail/${movies[4]?.id}`,
+                    pathname: `details/${movies[4]?.id}`,
                     // query: { id: movies.id },
                   }}
                 >

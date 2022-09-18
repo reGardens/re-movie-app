@@ -18,14 +18,15 @@ const More = () => {
   const movies = useSelector((state) => state.reducer.data);
   const loading = useSelector((state) => state.loading);
   const [search, setSearch] = useState("");
-  const listWrap = document.querySelector(".list-item");
-  console.log(listWrap);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // console.log('detail movie',movies[0].poster_path);
+    // console.log(movies);
     dispatch(getDataMovie());
   }, []);
+
 
   let movieSearch = movies.filter((val) => {
     return Object.keys(val).some((key) =>
