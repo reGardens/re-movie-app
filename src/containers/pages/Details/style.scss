@@ -15,16 +15,61 @@
         }
 
         .desc-wrap {
-            display: flex;
-            // background-color: yellow;
-            // height: 100%;
-            p {
-                color: white;
-                margin-bottom: 10px;
+            color: white;
+            ul {
+                list-style: none;
+                margin: 0 0 30px;
+                padding: 0;
+                li {
+                    padding-left: 100px;
+                    font-weight: 300;
+                    font-size: 15px;
+                    position: relative;
+                    text-align: justify;
+                    line-height: 1.8;
+                    span {
+                        min-width: 90px;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        // &:nth-child(0) {}
+                    }
+                }
             }
-            .left {
-                width: 15em;
-            }
+            // display: flex;
+            // // background-color: yellow;
+            // // height: 100%;
+            // gap: 10px;
+            // p {
+            //     color: white;
+            //     // margin-bottom: 10px;
+            // }
+            // .left {
+            //     width: 15em;
+            //     display: grid;
+            //     // align-items: center;
+            //     justify-content: left;
+            //     background-color: red;
+            // }
+            // .right {
+            //     // ul {
+            //     //     display: inline;
+            //     //     li {
+            //     //         display: inline;
+            //     //         // display: flex;
+            //     //         background-color: red;
+            //     //         // background-color: yellow;
+            //     //         color: white;
+            //     //     }
+            //     // }
+            //     .pGenres {
+            //         position: relative;
+            //         display: inline;
+            //         background-color: red;
+            //         margin-bottom: 10px;
+            //         // padding-bottom: 10px;
+            //     }
+            // }
         }
 
     }

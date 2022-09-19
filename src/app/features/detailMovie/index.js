@@ -10,7 +10,7 @@ export const getDetailMovies = createAsyncThunk(
           `https://api.themoviedb.org/3/movie/${id}?api_key=8f0b026ba6cf9d21d0a94eb7a2ede055&language=en-US&page=1`
         );
         const res = data;
-        // console.log(res);
+        console.log(res);
         return res;
       } catch (error) {
         rejectWithValue(error.response);
