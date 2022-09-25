@@ -14,6 +14,7 @@ import { IconContext } from "react-icons/lib";
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { getDataMovie } from "../../../app/features/reducer";
+import ImageSlider from "../../../components/Atoms/ImageSlider";
 
 const Dashboard = () => {
   const [search, setSearch] = useState("");
@@ -24,7 +25,7 @@ const Dashboard = () => {
   const loading = useSelector((state) => state.movies);
 
   useEffect(() => {
-    // console.log(movies)
+    console.log(movies);
     dispatch(getDataMovie());
   }, []);
 
@@ -35,163 +36,178 @@ const Dashboard = () => {
     }
   });
 
-  // const handleApi = () => {
-  //   console.log(movies);
-  // };
-
   return (
     <>
-      <div className="img-besar">
-        <img src={tmdbLogo} />
-        <div className="input-wrap">
-          <div className="wrap">
-            <div className="src">
-              <input
-                type="text"
-                placeholder="Search"
-                onChange={(e) => {
-                  setSearch(e.target.value);
-                }}
-                value={search}
-              />
+      <div className="content">
+        <div className="img-besar">
+          {/* element 1 */}
+          {/* crousel */}
+          <ImageSlider />
 
-              <IconContext.Provider value={{ className: "search-icon" }}>
-                <BsSearch />
-              </IconContext.Provider>
-            </div>
-            <div className="hasil">
-              {titleSearch.length > 0 ? (
-                <>
-                  {titleSearch.map((val, index) => {
-                    return (
-                      <div className="search-wrap" key={index}>
-                        <Link
-                          to={{
-                            pathname: `details/${movies.id}`,
-                            // query: { id: movies.id },
-                          }}
-                        >
-                          {val.title}
-                        </Link>
-                      </div>
-                    );
-                  })}
-                </>
-              ) : null}
+          {/* element 2 */}
+          <div className="wrapper">
+            <div className="container">
+              {/* element input */}
+              <div className="input">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
+                  value={search}
+                />
 
-              {/* filter/search */}
-              {/* {movies.length > 0 ? (
-                <Fragment>
-                  {movies
-                    .filter((val) => {
-                      if (search == "") {
-                      } else if (
-                        val.title
-                          .toLowerCase()
-                          .includes(search.toLowerCase()) ||
-                        loading == true
-                      ) {
-                        return val;
-                      }
-                    })
-                    .map((movies, index) => {
+                <IconContext.Provider value={{ className: "search-icon" }}>
+                  <BsSearch />
+                </IconContext.Provider>
+              </div>
+
+              {/* element hasil */}
+              <div className="hasil">
+                {titleSearch.length > 0 ? (
+                  <>
+                    {titleSearch.map((val, index) => {
+                      // console.log("val", val);
                       return (
-                        <div className="search-wrap" key={index}>
+                        <div className="hasil-wrap" key={index}>
                           <Link
                             to={{
-                              pathname: `detail/${movies.id}`,
+                              pathname: `details/${val.id}`,
                               // query: { id: movies.id },
                             }}
                           >
-                            {movies.title}
+                            {val.title}
                           </Link>
                         </div>
                       );
                     })}
-                </Fragment>
-              ) : null} */}
+                  </>
+                ) : null}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="dumy" />
-      </div>
 
-      <div className="subLink">
-        <p>Ter Populer</p>
-      </div>
-      <div className="card-wrap">
-        {movies.length > 0 ? (
-          <Fragment>
-            <div className="image-wrap">
-              <div>
-                <Link
-                  to={{
-                    pathname: `details/${movies[0]?.id}`,
-                    // query: { id: movies.id },
+          {/* <div className="container">
+            <div className="input-wrap">
+              <div className="src">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  onChange={(e) => {
+                    setSearch(e.target.value);
                   }}
-                >
-                  <img src={`${baseImgUrl}${movies[0]?.poster_path}`}></img>
-                  <p>{movies[0]?.title}</p>
-                </Link>
+                  value={search}
+                />
+
+                <IconContext.Provider value={{ className: "search-icon" }}>
+                  <BsSearch />
+                </IconContext.Provider>
               </div>
-              <div>
-                <Link
-                  to={{
-                    pathname: `details/${movies[1]?.id}`,
-                    // query: { id: movies.id },
-                  }}
-                >
-                  <img src={`${baseImgUrl}${movies[1]?.poster_path}`}></img>
-                  <p>{movies[1]?.title}</p>
-                </Link>
-              </div>
-              <div>
-                <Link
-                  to={{
-                    pathname: `details/${movies[2]?.id}`,
-                    // query: { id: movies.id },
-                  }}
-                >
-                  <img src={`${baseImgUrl}${movies[2]?.poster_path}`}></img>
-                  <p>{movies[2]?.title}</p>
-                </Link>
-              </div>
-              <div>
-                <Link
-                  to={{
-                    pathname: `details/${movies[3]?.id}`,
-                    // query: { id: movies.id },
-                  }}
-                >
-                  <img src={`${baseImgUrl}${movies[3]?.poster_path}`}></img>
-                  <p>{movies[3]?.title}</p>
-                </Link>
-              </div>
-              <div>
-                <Link
-                  to={{
-                    pathname: `details/${movies[4]?.id}`,
-                    // query: { id: movies.id },
-                  }}
-                >
-                  <img src={`${baseImgUrl}${movies[4]?.poster_path}`}></img>
-                  <p>{movies[4]?.title}</p>
-                </Link>
+              <div className="hasil">
+                {titleSearch.length > 0 ? (
+                  <>
+                    {titleSearch.map((val, index) => {
+                      // console.log("val", val);
+                      return (
+                        <div className="hasil-wrap" key={index}>
+                          <Link
+                            to={{
+                              pathname: `details/${val.id}`,
+                              // query: { id: movies.id },
+                            }}
+                          >
+                            {val.title}
+                          </Link>
+                        </div>
+                      );
+                    })}
+                  </>
+                ) : null}
               </div>
             </div>
-          </Fragment>
-        ) : (
-          <ClipLoader
-            className="loading"
-            color={"#ffffff"}
-            loading={loading}
-            // size={}
-          />
-        )}
-      </div>
-      {/* uji coba slide */}
+          </div> */}
 
-      {/* <div className="card-overflow">
+          {/* <div className="dumy" /> */}
+        </div>
+
+        {/* <div className="subLink">
+          <p>Ter Populer</p>
+        </div>
+        <div className="card-wrap">
+          {movies.length > 0 ? (
+            <Fragment>
+              <div className="image-wrap">
+                <div>
+                  <Link
+                    to={{
+                      pathname: `details/${movies[0]?.id}`,
+                      // query: { id: movies.id },
+                    }}
+                  >
+                    <img src={`${baseImgUrl}${movies[0]?.poster_path}`}></img>
+                    <p>{movies[0]?.title}</p>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to={{
+                      pathname: `details/${movies[1]?.id}`,
+                      // query: { id: movies.id },
+                    }}
+                  >
+                    <img src={`${baseImgUrl}${movies[1]?.poster_path}`}></img>
+                    <p>{movies[1]?.title}</p>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to={{
+                      pathname: `details/${movies[2]?.id}`,
+                      // query: { id: movies.id },
+                    }}
+                  >
+                    <img src={`${baseImgUrl}${movies[2]?.poster_path}`}></img>
+                    <p>{movies[2]?.title}</p>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to={{
+                      pathname: `details/${movies[3]?.id}`,
+                      // query: { id: movies.id },
+                    }}
+                  >
+                    <img src={`${baseImgUrl}${movies[3]?.poster_path}`}></img>
+                    <p>{movies[3]?.title}</p>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to={{
+                      pathname: `details/${movies[4]?.id}`,
+                      // query: { id: movies.id },
+                    }}
+                  >
+                    <img src={`${baseImgUrl}${movies[4]?.poster_path}`}></img>
+                    <p>{movies[4]?.title}</p>
+                  </Link>
+                </div>
+              </div>
+            </Fragment>
+          ) : (
+            <ClipLoader
+              className="loading"
+              color={"#ffffff"}
+              loading={loading}
+              // size={}
+            />
+          )}
+        </div> */}
+
+        {/* uji coba slide */}
+
+        {/* <div className="card-overflow">
         <div className="image-wrap">
           {movies.length > 0 ? (
             <Fragment>
@@ -222,8 +238,9 @@ const Dashboard = () => {
           )}
         </div>
       </div> */}
-      <div className="showMore">
-        <Link to="/more">More...</Link>
+        <div className="showMore">
+          <Link to="/more">More...</Link>
+        </div>
       </div>
     </>
   );

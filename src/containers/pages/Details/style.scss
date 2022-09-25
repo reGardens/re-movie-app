@@ -1,13 +1,12 @@
 .detail {
     display: flex;
     align-items: center;
-    // justify-content: center;
     height: 90vh;
-    
+
     .container {
         display: flex;
         gap: 50px;
-        
+
         .image-wrap {
             img {
                 width: 20em;
@@ -16,10 +15,12 @@
 
         .desc-wrap {
             color: white;
+
             ul {
                 list-style: none;
                 margin: 0 0 30px;
                 padding: 0;
+
                 li {
                     padding-left: 100px;
                     font-weight: 300;
@@ -27,108 +28,42 @@
                     position: relative;
                     text-align: justify;
                     line-height: 1.8;
+
                     span {
                         min-width: 90px;
                         position: absolute;
                         left: 0;
                         top: 0;
-                        // &:nth-child(0) {}
+                    }
+                }
+
+                .trailer-wrap {
+                    margin: 3em 5em 3em 5em;
+
+                    .btn-wrap {
+                        display: flex;
+                        justify-content: center;
+                        gap: 10em;
+                        margin: 15px 0;
+
+                        a {
+                            background-color: transparent;
+                            text-decoration: none;
+                            outline: none;
+                            color: white;
+                            letter-spacing: 1px;
+                            font-size: 22px;
+                            font-weight: 600;
+                            transition: 0.2s ease-in-out;
+
+                            &:hover {
+                                color: #6583a0;
+                            }
+                        }
                     }
                 }
             }
-            // display: flex;
-            // // background-color: yellow;
-            // // height: 100%;
-            // gap: 10px;
-            // p {
-            //     color: white;
-            //     // margin-bottom: 10px;
-            // }
-            // .left {
-            //     width: 15em;
-            //     display: grid;
-            //     // align-items: center;
-            //     justify-content: left;
-            //     background-color: red;
-            // }
-            // .right {
-            //     // ul {
-            //     //     display: inline;
-            //     //     li {
-            //     //         display: inline;
-            //     //         // display: flex;
-            //     //         background-color: red;
-            //     //         // background-color: yellow;
-            //     //         color: white;
-            //     //     }
-            //     // }
-            //     .pGenres {
-            //         position: relative;
-            //         display: inline;
-            //         background-color: red;
-            //         margin-bottom: 10px;
-            //         // padding-bottom: 10px;
-            //     }
-            // }
         }
 
     }
 }
-
-// .detail {
-//     position: relative;
-//     display: grid;
-//     align-items: center;
-//     width: 100%;
-//     height: 90vh;
-//     background-color: red;
-//     // overflow-x: hidden;
-
-//     .detail-wrap {
-//         position: relative;
-//         background-color: yellow;
-//         display: flex;
-//         // display: grid;
-//         // grid-template-columns: 1fr auto;
-//         // gap: 50px;
-
-//         .image-wrap {
-//             width: 20em;
-//             height: 70vh;
-//             margin-right: 50px;
-
-//             img {
-//                 width: 100%;
-//                 height: 100%;
-//             }
-//         }
-
-//         .desc-wrap {
-//             // position: relative;
-//             // background-color: yellow;
-//             width: 60em;
-//             // height: 70vh;
-//             display: flex;
-
-//             // .left,
-//             // .right,
-//             // p {
-//             //     margin-top: 10px;
-//             //     color: white;
-//             // }
-//             p {
-//                 color: white;
-//             }
-
-//             .left {
-//                 // background-color: yellow;
-//                 width: 5em;
-//             }
-
-//             .right {
-//                 // background-color: green;
-
-//             }
-//         }
-//     }
-// }

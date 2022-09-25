@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
 // style
@@ -66,6 +66,16 @@ const Details = () => {
                 <span>Sinopsis :</span>
                 {detailMovie.overview}
               </li>
+
+              {/* thrailer elemen */}
+              <div className="trailer-wrap">
+                <hr />
+                <div className="btn-wrap">
+                  <Link to={{pathname: ''}}>Watch Trailer</Link>
+                  <Link to={{pathname: ''}}>Playing At</Link>
+                </div>
+                <hr />
+              </div>
             </ul>
           </div>
         </div>

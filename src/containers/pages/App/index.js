@@ -15,11 +15,11 @@ function App() {
     <div className="App">
       <nav>
         <div className="left">
-          <p>TestLogo</p>
+          <p>Movies</p>
         </div>
         <div className="right">
           <Link to="/">Home</Link>
-          <Link to="/details">Detail</Link>
+          {/* <Link to="/details">Detail</Link> */}
           {/* <Link to="detail">Popular</Link> */}
         </div>
       </nav>
